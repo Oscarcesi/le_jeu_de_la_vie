@@ -23,9 +23,7 @@ int main() {
         }
 
         grille.renderGrid(window);
-        cout << "ta mère" << endl;
         grille.update();
-        cout << "la pute" << endl;
     }
 
     return 0;
