@@ -11,9 +11,10 @@ class Grid
         const int cellSize;
         const int gridWidth;
         const int gridHeight;
+        std::vector<std::vector<Cell>> grid;
         
     public:
-        std::vector<std::vector<Cell>> grid;
+        
 
         Grid(int cellSize, int gridWidth, int gridHeight) : cellSize(cellSize), gridWidth(gridWidth), gridHeight(gridHeight), grid(gridWidth, std::vector<Cell>(gridHeight)) {}
         ~Grid(){};
@@ -21,9 +22,9 @@ class Grid
         int getCellSize();
         int getGridWidth();
         int getGridHeight();
+        std::vector<std::vector<Cell>> getGrid();
 
         void initializeGrid();
-        void renderGrid(sf::RenderWindow &window);
         void update();
 };
 

@@ -21,6 +21,11 @@ int Grid :: getGridHeight()
     return gridHeight;
 }
 
+std::vector<std::vector<Cell>> Grid :: getGrid()
+{
+    return grid;
+}
+
 
 void Grid :: initializeGrid()
 {
@@ -33,19 +38,6 @@ void Grid :: initializeGrid()
             grid[x][y].setIsAlive(std::rand() % 2);  // Randomly initialize cells as alive or dead
         }
     }
-}
-
-void Grid :: renderGrid(sf::RenderWindow &window) {
-    int x, y;
-    
-    window.clear();
-    sf::RectangleShape cell(sf::Vector2f(cellSize - 1.0f, cellSize - 1.0f));
-    for (x = 0; x < gridWidth; ++x) {
-        for (y = 0; y < gridHeight; ++y) {
-            grid[x][y].drawCell(window);
-        }
-    }
-    window.display();
 }
 
 void Grid :: update()

@@ -2,7 +2,9 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
-#include "grid.h"
+#include "Simulation.h"
+#include "Console.h"
+#include "Graphique.h"
 #include <iostream>
 #include <string>
 
@@ -10,20 +12,26 @@ using namespace std;
 
 
 int main() {
-    Grid grille(5, 100, 100);
-    sf::RenderWindow window(sf::VideoMode(grille.getGridWidth() * grille.getCellSize(), grille.getGridHeight() * grille.getCellSize()), "Game of Life");
+    int choix;
+    cout << "Quel mode voulez vous (1 : console, 2 : graphique) ?";
+    cin >> choix;
 
-    grille.initializeGrid();
-
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        grille.renderGrid(window);
-        grille.update();
+    if (choix == 1)
+    {
+        int x;
+        cout << "Combien d'itérations voulez vous effectuer ?";
+        cin >> x;
+        Console console(5, 10, 10, x);
+        console.run();
+    }
+    else if (choix == 2)
+    {
+        Graphique graphique(5, 100, 100);
+        graphique.run();
+    }
+    else
+    {
+        cout << "Réponse invalide.";
     }
 
     return 0;
