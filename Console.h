@@ -10,7 +10,7 @@ class Console : public Simulation
 {
     private :
         int nbIterations;
-
+        int cpt = 0;
     public:
         Console(int cellSize, int gridWidth, int gridHeight, int nbIterations) : Simulation(cellSize, gridWidth, gridHeight), nbIterations(nbIterations) {}
         ~Console(){};

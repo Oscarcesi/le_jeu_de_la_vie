@@ -5,13 +5,12 @@
 
 void Console :: run()
 {
-    int cpt = 0;
     grille.initializeGrid();
 
     while (cpt<nbIterations) {
+        cpt = cpt + 1;
         print();
         grille.update();
-        ++cpt;
     }
 }
 
@@ -21,7 +20,7 @@ void Console :: print()
 {
     int x, y;
 
-    std::cout << "Itération n° : " << nbIterations << std::endl;
+    std::cout << "Itération n° : " << cpt << std::endl;
 
     for (x = 0; x < grille.getGridWidth(); ++x) {
         for (y = 0; y < grille.getGridHeight(); ++y) {

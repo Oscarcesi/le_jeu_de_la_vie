@@ -7,7 +7,7 @@
 
 class Simulation
 {
-    public:
+    protected:
         Grid grille;
         
     public:
