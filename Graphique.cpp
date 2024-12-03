@@ -21,7 +21,6 @@ void Graphique :: run()
     //sf::RenderWindow window(sf::VideoMode(grille.getGridWidth() * grille.getCellSize(), grille.getGridHeight() * grille.getCellSize()), "Game of Life");
 
     initializeGrid();
-    std::cout << "ta mère" << std::endl;
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {

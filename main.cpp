@@ -30,9 +30,7 @@ int main() {
     }
     else if (choix == 2)
     {
-        std::cout << "ntp" << std::endl;
         Graphique graphique;
-        std::cout << "ntm" << std::endl;
         graphique.run();
         
     }
