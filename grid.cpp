@@ -1,6 +1,7 @@
 #include "grid.h"
 #include "cell.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -21,31 +22,25 @@ int Grid :: getGridHeight()
     return gridHeight;
 }
 
-std::vector<std::vector<Cell>> Grid :: getGrid()
+std::vector<std::vector<Cell>>& Grid :: getGrid()
 {
     return grid;
 }
 
-
-void Grid :: initializeGrid()
+void Grid :: setGrid(int Width, int Height)
 {
-    
-    std::srand(std::time(0));
-    for (int x = 0; x < gridWidth; ++x) {
-        for (int y = 0; y < gridHeight; ++y) {
-            grid[x][y].setCellSize(cellSize);
-            grid[x][y].setCoordos(x, y);
-            grid[x][y].setIsAlive(std::rand() % 2);  // Randomly initialize cells as alive or dead
-        }
-    }
+    grid.resize(Height, std::vector<Cell>(Width));
+    gridWidth = Width;
+    gridHeight = Height;
 }
 
 void Grid :: update()
 {
     int x, y;
     bool alive;
-    for (x = 0; x < gridWidth; ++x) {
-        for (y = 0; y < gridHeight; ++y) {
+    
+    for (x = 0; x < gridHeight; ++x) {
+        for (y = 0; y < gridWidth; ++y) {
             int dx, dy, nx, ny, voisines = 0;
             for (dx = -1; dx <= 1; ++dx)
             {
@@ -53,7 +48,7 @@ void Grid :: update()
                 {
                     nx = x + dx;
                     ny = y + dy;
-                    if (nx >= 0 && nx < gridWidth && ny >= 0 && ny < gridHeight && not(dx == 0 && dy == 0))
+                    if (nx >= 0 && nx < gridHeight && ny >= 0 && ny < gridWidth && not(dx == 0 && dy == 0))
                     {
                         if (grid[nx][ny].getIsAlive())
                         {
@@ -74,8 +69,9 @@ void Grid :: update()
             
         }
     }
-    for (x = 0; x < gridWidth; ++x) {
-        for (y = 0; y < gridHeight; ++y) {
+    
+    for (x = 0; x < gridHeight; ++x) {
+        for (y = 0; y < gridWidth; ++y) {
             grid[x][y].changeState();
         }
     }

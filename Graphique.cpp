@@ -1,5 +1,6 @@
 #include "Graphique.h"
 #include "grid.h"
+#include <iostream>
 
 
 void Graphique :: print()
@@ -8,8 +9,8 @@ void Graphique :: print()
     
     window.clear();
     sf::RectangleShape cell(sf::Vector2f(grille.getCellSize() - 1.0f, grille.getCellSize() - 1.0f));
-    for (x = 0; x < grille.getGridWidth(); ++x) {
-        for (y = 0; y < grille.getGridHeight(); ++y) {
+    for (x = 0; x < grille.getGridHeight(); ++x) {
+        for (y = 0; y < grille.getGridWidth(); ++y) {
             grille.getGrid()[x][y].drawCell(window);
         }
     }
@@ -20,7 +21,7 @@ void Graphique :: run()
 {
     //sf::RenderWindow window(sf::VideoMode(grille.getGridWidth() * grille.getCellSize(), grille.getGridHeight() * grille.getCellSize()), "Game of Life");
 
-    grille.initializeGrid();
+    initializeGrid();
 
     while (window.isOpen()) {
         sf::Event event;
@@ -29,7 +30,9 @@ void Graphique :: run()
                 window.close();
         }
 
+        std::cout << "ta mère" << std::endl;
         print();
+        std::cout << "la pute" << std::endl;
         grille.update();
     }
 }

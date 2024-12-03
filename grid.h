@@ -9,22 +9,24 @@ class Grid
 {
     private:
         const int cellSize;
-        const int gridWidth;
-        const int gridHeight;
+        int gridWidth;
+        int gridHeight;
         std::vector<std::vector<Cell>> grid;
         
     public:
         
-
+        Grid() : cellSize(5), gridWidth(0), gridHeight(0), grid(gridWidth, std::vector<Cell>(gridHeight)){};
         Grid(int cellSize, int gridWidth, int gridHeight) : cellSize(cellSize), gridWidth(gridWidth), gridHeight(gridHeight), grid(gridWidth, std::vector<Cell>(gridHeight)) {}
         ~Grid(){};
 
         int getCellSize();
         int getGridWidth();
         int getGridHeight();
-        std::vector<std::vector<Cell>> getGrid();
+        std::vector<std::vector<Cell>>& getGrid();
 
-        void initializeGrid();
+        void setGrid(int Width, int Height);
+
+        //void initializeGrid(bool state);
         void update();
 };
 

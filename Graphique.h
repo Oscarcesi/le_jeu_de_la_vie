@@ -12,11 +12,11 @@ class Graphique : public Simulation
     sf::RenderWindow window;
 
     public:
-        Graphique(int cellSize, int gridWidth, int gridHeight) : Simulation(cellSize, gridWidth, gridHeight), window(sf::VideoMode(grille.getGridWidth() * grille.getCellSize(), grille.getGridHeight() * grille.getCellSize()), "Game of Life") {}
+        Graphique() : Simulation(), window(sf::VideoMode(100,100), "Game of Life") {}
         ~Graphique(){};
 
-        virtual void print();
-        virtual void run();
+        void print();
+        void run();
 };
 
 

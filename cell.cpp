@@ -1,5 +1,5 @@
 #include "cell.h"
-
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 
@@ -21,6 +21,7 @@ bool Cell :: getNextState()
 void Cell :: setIsAlive(bool state)
 {
     isAlive = state;
+    //std::cout << "dans cell" << getIsAlive() << std::endl;
 }
 
 void Cell :: setNextState(bool state)

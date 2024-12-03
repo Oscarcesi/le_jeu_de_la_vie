@@ -13,8 +13,10 @@ class Simulation
     public:
         
 
-        Simulation(int cellSize, int gridWidth, int gridHeight) : grille(cellSize, gridWidth, gridHeight) {}
+        Simulation(){};
         ~Simulation(){};
+
+        void initializeGrid();
 
         virtual void run() = 0;
         virtual void print() = 0;
