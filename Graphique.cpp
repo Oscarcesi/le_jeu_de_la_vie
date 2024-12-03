@@ -2,7 +2,6 @@
 #include "grid.h"
 #include <iostream>
 
-
 void Graphique :: print()
 {
     int x, y;
@@ -22,7 +21,7 @@ void Graphique :: run()
     //sf::RenderWindow window(sf::VideoMode(grille.getGridWidth() * grille.getCellSize(), grille.getGridHeight() * grille.getCellSize()), "Game of Life");
 
     initializeGrid();
-
+    std::cout << "ta mère" << std::endl;
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -30,9 +29,7 @@ void Graphique :: run()
                 window.close();
         }
 
-        std::cout << "ta mère" << std::endl;
         print();
-        std::cout << "la pute" << std::endl;
         grille.update();
     }
 }

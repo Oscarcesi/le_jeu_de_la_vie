@@ -9,6 +9,7 @@ class Simulation
 {
     protected:
         Grid grille;
+        std::string chemin;
         
     public:
         

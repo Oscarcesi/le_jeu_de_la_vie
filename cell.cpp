@@ -50,7 +50,7 @@ void Cell :: drawCell(sf::RenderWindow &window)
     sf::RectangleShape cellule(sf::Vector2f(cellSize - 1.0f, cellSize - 1.0f));
     
     if (isAlive) {
-        cellule.setPosition(x * cellSize, y * cellSize);
+        cellule.setPosition(y * cellSize, x * cellSize);
         window.draw(cellule);
     }
 }

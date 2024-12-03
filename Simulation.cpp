@@ -8,9 +8,9 @@
 void Simulation :: initializeGrid()
 {
     int hauteur, largeur;
-    std::string chemin = "./fichiers/entree.txt";
-
-    //std::cin >> chemin;
+    
+    std::cout << "Entrez le chemin de votre fichier d'entrée : \n";
+    std::cin >> chemin;
 
     std::ifstream fichier(chemin);
 
@@ -32,20 +32,15 @@ void Simulation :: initializeGrid()
     for (int x = 0; x < grille.getGridHeight(); ++x) {
         std::getline(fichier, ligne);
         ligne.erase(std::remove(ligne.begin(), ligne.end(), ' '), ligne.end());
-        std::cout << "ligne " << ligne << std::endl;
-        for (int y = 0; y < grille.getGridWidth();) {
+        //std::cout << "ligne " << ligne << std::endl;
+        for (int y = 0; y < grille.getGridWidth();++y) {
             //std::cout << "dans init " << ligne[y] << std::endl;
             
             //std::cout << "dans init " << ligne[y] << std::endl;
             grille.getGrid()[x][y].setCellSize(grille.getCellSize());
             grille.getGrid()[x][y].setCoordos(x, y);
             grille.getGrid()[x][y].setIsAlive((ligne[y] == '1'));
-            ++y;
-            //std::cout << "y : " << y << std::endl;
-        
-           
         }
-     
     }
     //std::cout << "dans init" << grille.getGrid()[0][0].getIsAlive() << std::endl;
 }
