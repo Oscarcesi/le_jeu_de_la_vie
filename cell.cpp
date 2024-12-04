@@ -1,5 +1,5 @@
 #include "cell.h"
-
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 
@@ -21,6 +21,7 @@ bool Cell :: getNextState()
 void Cell :: setIsAlive(bool state)
 {
     isAlive = state;
+    //std::cout << "dans cell" << getIsAlive() << std::endl;
 }
 
 void Cell :: setNextState(bool state)
@@ -49,7 +50,7 @@ void Cell :: drawCell(sf::RenderWindow &window)
     sf::RectangleShape cellule(sf::Vector2f(cellSize - 1.0f, cellSize - 1.0f));
     
     if (isAlive) {
-        cellule.setPosition(x * cellSize, y * cellSize);
+        cellule.setPosition(y * cellSize, x * cellSize);
         window.draw(cellule);
     }
 }

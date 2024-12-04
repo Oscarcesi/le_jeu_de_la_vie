@@ -1,6 +1,7 @@
 #include "grid.h"
 #include "cell.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -21,45 +22,51 @@ int Grid :: getGridHeight()
     return gridHeight;
 }
 
-std::vector<std::vector<Cell>> Grid :: getGrid()
+std::vector<std::vector<Cell>>& Grid :: getGrid()
 {
     return grid;
 }
 
-
-void Grid :: initializeGrid()
+void Grid :: setGrid(int Width, int Height)
 {
-    
-    std::srand(std::time(0));
-    for (int x = 0; x < gridWidth; ++x) {
-        for (int y = 0; y < gridHeight; ++y) {
-            grid[x][y].setCellSize(cellSize);
-            grid[x][y].setCoordos(x, y);
-            grid[x][y].setIsAlive(std::rand() % 2);  // Randomly initialize cells as alive or dead
-        }
-    }
+    grid.resize(Height, std::vector<Cell>(Width));
+    gridWidth = Width;
+    gridHeight = Height;
 }
 
-void Grid :: update()
+void Grid :: setCellSize(int size)
 {
-    int x, y;
+    cellSize = size;
+}
+
+void Grid :: update(int i, int j)
+{
+    //int test;
     bool alive;
-    for (x = 0; x < gridWidth; ++x) {
-        for (y = 0; y < gridHeight; ++y) {
+    
+    for (int x = i; x < i + gridHeight/2; ++x) {
+        for (int y = j; y < j + gridWidth/2; ++y) {
             int dx, dy, nx, ny, voisines = 0;
+            //cout << "cellule suivant" << endl;
+            //test = 0;
             for (dx = -1; dx <= 1; ++dx)
             {
                 for (dy = -1; dy <= 1; ++dy)
                 {
-                    nx = x + dx;
-                    ny = y + dy;
-                    if (nx >= 0 && nx < gridWidth && ny >= 0 && ny < gridHeight && not(dx == 0 && dy == 0))
+                    //test += 1;
+                    nx = ((x + dx) % gridHeight + gridHeight) % gridHeight;
+                    ny = ((y + dy) % gridWidth + gridWidth) % gridWidth;
+                    //cout << nx << ", " << ny << endl;
+                    if (not(dx == 0 && dy == 0))
                     {
+
                         if (grid[nx][ny].getIsAlive())
                         {
                             voisines+=1;
                         }
+                        //cout << test << endl;
                     }
+                    
                 }
             }
             alive = grid[x][y].getIsAlive();
@@ -74,8 +81,12 @@ void Grid :: update()
             
         }
     }
-    for (x = 0; x < gridWidth; ++x) {
-        for (y = 0; y < gridHeight; ++y) {
+}
+
+void Grid :: changeState(int i, int j)
+{
+    for (int x = i; x < i + gridHeight/2; ++x) {
+        for (int y = j; y < j + gridWidth/2; ++y) {
             grid[x][y].changeState();
         }
     }

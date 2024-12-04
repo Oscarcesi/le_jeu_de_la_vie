@@ -6,6 +6,7 @@
 #include "Console.h"
 #include "Graphique.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 
 using namespace std;
@@ -13,6 +14,9 @@ using namespace std;
 
 int main() {
     int choix;
+   
+
+
     cout << "Quel mode voulez vous (1 : console, 2 : graphique) ?";
     cin >> choix;
 
@@ -21,13 +25,14 @@ int main() {
         int x;
         cout << "Combien d'itérations voulez vous effectuer ?";
         cin >> x;
-        Console console(5, 10, 10, x);
+        Console console(x);
         console.run();
     }
     else if (choix == 2)
     {
-        Graphique graphique(5, 100, 100);
+        Graphique graphique;
         graphique.run();
+        
     }
     else
     {
