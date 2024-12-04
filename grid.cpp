@@ -24,7 +24,6 @@ int Grid :: getGridHeight()
 }
 
 std::vector<std::vector<Cell>>& Grid :: getGrid()
-std::vector<std::vector<Cell>>& Grid :: getGrid()
 {
     return grid;
 }
