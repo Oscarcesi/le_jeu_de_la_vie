@@ -17,6 +17,8 @@ class Graphique : public Simulation
 
         void print();
         void run();
+        void print();
+        void run();
 };
 
 

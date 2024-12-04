@@ -16,6 +16,7 @@ class Grid
     public:
         
         Grid() : cellSize(5), gridWidth(0), gridHeight(0), grid(gridWidth, std::vector<Cell>(gridHeight)){};
+        Grid() : cellSize(5), gridWidth(0), gridHeight(0), grid(gridWidth, std::vector<Cell>(gridHeight)){};
         Grid(int cellSize, int gridWidth, int gridHeight) : cellSize(cellSize), gridWidth(gridWidth), gridHeight(gridHeight), grid(gridWidth, std::vector<Cell>(gridHeight)) {}
         ~Grid(){};
 

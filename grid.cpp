@@ -2,6 +2,7 @@
 #include "cell.h"
 #include <iostream>
 #include <fstream>
+#include <fstream>
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -22,6 +23,7 @@ int Grid :: getGridHeight()
     return gridHeight;
 }
 
+std::vector<std::vector<Cell>>& Grid :: getGrid()
 std::vector<std::vector<Cell>>& Grid :: getGrid()
 {
     return grid;
