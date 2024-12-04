@@ -12,9 +12,11 @@ class Graphique : public Simulation
     sf::RenderWindow window;
 
     public:
-        Graphique() : Simulation(), window(sf::VideoMode(800, 600), "Game of Life") {}
+        Graphique() : Simulation(), window(sf::VideoMode::getDesktopMode(), "Game of Life") {}
         ~Graphique(){};
 
+        void print();
+        void run();
         void print();
         void run();
 };

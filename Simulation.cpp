@@ -10,7 +10,8 @@ void Simulation :: initializeGrid()
     int hauteur, largeur;
     
     std::cout << "Entrez le chemin de votre fichier d'entrée : \n";
-    std::cin >> chemin;
+    //std::cin >> chemin;
+    chemin = "./fichiers/entree.txt";
 
     std::ifstream fichier(chemin);
 
