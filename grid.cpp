@@ -23,6 +23,11 @@ int Grid :: getGridHeight()
     return gridHeight;
 }
 
+bool Grid :: getChanges()
+{
+    return changes;
+}
+
 std::vector<std::vector<Cell>>& Grid :: getGrid()
 {
     return grid;
@@ -40,11 +45,16 @@ void Grid :: setCellSize(int size)
     cellSize = size;
 }
 
+void Grid :: setChangesFalse()
+{
+    changes = false;
+}
+
 void Grid :: update(int i, int j)
 {
     //int test;
     bool alive;
-    
+
     for (int x = i; x < i + gridHeight/2; ++x) {
         for (int y = j; y < j + gridWidth/2; ++y) {
             int dx, dy, nx, ny, voisines = 0;
@@ -74,6 +84,8 @@ void Grid :: update(int i, int j)
             if ((voisines == 3 && not(alive)) || ((voisines == 3 || voisines == 2) && alive))
             {
                 grid[x][y].setNextState(true);
+                changes = true;
+                //std::cout << "change = true" << endl;
             }
             else
             {
