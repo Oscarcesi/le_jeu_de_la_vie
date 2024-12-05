@@ -10,6 +10,7 @@ class Cell
         int cellSize;
         bool isAlive;
         bool nextState;
+        bool infected = false;
         int x;
         int y;
 
@@ -21,11 +22,14 @@ class Cell
         int getCellSize();
         bool getIsAlive();
         bool getNextState();
+        bool isInfected();
 
         void setIsAlive(bool state);
         void setCoordos(int x, int y);
         void setNextState(bool state);
         void setCellSize(int cellSize);
+
+        void InfectCell();
         void changeState();
         void drawCell(sf::RenderWindow &window);
 };

@@ -18,6 +18,11 @@ bool Cell :: getNextState()
     return nextState;
 }
 
+bool Cell :: isInfected()
+{
+    return infected;
+}
+
 void Cell :: setIsAlive(bool state)
 {
     isAlive = state;
@@ -40,14 +45,23 @@ void Cell :: setCellSize(int cellSize)
     this->cellSize = cellSize;
 }
 
+void Cell :: InfectCell()
+{
+    infected = true;
+    isAlive = true;
+}
+
 void Cell :: changeState()
 {
-    isAlive = nextState;
+    if (!infected)
+    {
+        isAlive = nextState;
+    }
 }
 
 void Cell :: drawCell(sf::RenderWindow &window)
 {
-    sf::RectangleShape cellule(sf::Vector2f(cellSize - 1.0f, cellSize - 1.0f));
+    sf::RectangleShape cellule(sf::Vector2f(cellSize, cellSize));
     
     if (isAlive) {
         cellule.setPosition(y * cellSize, x * cellSize);

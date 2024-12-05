@@ -84,8 +84,6 @@ void Grid :: update(int i, int j)
             if ((voisines == 3 && not(alive)) || ((voisines == 3 || voisines == 2) && alive))
             {
                 grid[x][y].setNextState(true);
-                changes = true;
-                //std::cout << "change = true" << endl;
             }
             else
             {
@@ -100,7 +98,11 @@ void Grid :: changeState(int i, int j)
 {
     for (int x = i; x < i + gridHeight/2; ++x) {
         for (int y = j; y < j + gridWidth/2; ++y) {
-            grid[x][y].changeState();
+            if ((grid[x][y].getIsAlive() != grid[x][y].getNextState()) & not(grid[x][y].isInfected()))
+            {
+                grid[x][y].changeState();
+                changes = true;
+            }
         }
     }
 }

@@ -13,31 +13,42 @@ using namespace std;
 
 
 int main() {
-    int choix;
-   
+    try {  
+        int choix;
+    
 
 
-    cout << "Quel mode voulez vous (1 : console, 2 : graphique) ?";
-    cin >> choix;
+        cout << "Quel mode voulez vous (1 : console, 2 : graphique) ?";
+        cin >> choix;
 
-    if (choix == 1)
-    {
-        int x;
-        cout << "Combien d'itérations voulez vous effectuer ?";
-        cin >> x;
-        Console console(x);
-        console.run();
+        if (choix == 1)
+        {
+            int x;
+            cout << "Combien d'itérations voulez vous effectuer ?";
+            cin >> x;
+            Console console(x);
+            console.run();
+        }
+        else if (choix == 2)
+        {
+            Graphique graphique;
+            graphique.run();
+            
+        }
+        else
+        {
+            cout << "Réponse invalide.";
+        }
+
+        return 0;
+    
+    
+    } catch (const std::exception &e) {
+        std::cerr << "Exception non capturée : " << e.what() << std::endl;
+        return EXIT_FAILURE;
+    } catch (...) {
+        std::cerr << "Exception inconnue capturée !" << std::endl;
+        return EXIT_FAILURE;
     }
-    else if (choix == 2)
-    {
-        Graphique graphique;
-        graphique.run();
-        
-    }
-    else
-    {
-        cout << "Réponse invalide.";
-    }
-
-    return 0;
+    return EXIT_SUCCESS;
 }

@@ -21,8 +21,8 @@ void Simulation :: initializeGrid()
 
     fichier >> hauteur >> largeur;
 
-    std::cout << hauteur << std::endl;
-    std::cout << largeur << std::endl;
+    //std::cout << hauteur << std::endl;
+    //std::cout << largeur << std::endl;
 
     grille.setGrid(largeur, hauteur);
     
