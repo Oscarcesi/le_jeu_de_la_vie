@@ -2,7 +2,6 @@
 #include "cell.h"
 #include <iostream>
 #include <fstream>
-#include <fstream>
 #include <string>
 #include <SFML/Graphics.hpp>
 
