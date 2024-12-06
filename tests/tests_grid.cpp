@@ -12,11 +12,19 @@ TEST(GridTest, Initialization) {
     }
 }
 
+TEST(GridTest, Initialization_vide) {
+    Grid grille(1, 0, 0); // Crée une grille 5x5
+    EXPECT_EQ(grille.getGridWidth(), 0); // Vérifie que la largeur est correcte
+    EXPECT_EQ(grille.getGridHeight(), 1); // Vérifie que la hauteur est correcte
+    EXPECT_FALSE(grille.getGrid()[0][0].getIsAlive());
+}
+
 TEST(GridTest, RulesOfLife) {
     Grid grille(7, 5, 5);
     grille.getGrid()[1][1].setIsAlive(true);
     grille.getGrid()[1][2].setIsAlive(true);
     grille.getGrid()[2][2].setIsAlive(true);
+    grille.getGrid()[3][4].setIsAlive(true);
 
     // Calculer la prochaine génération
     grille.update(0,0);
@@ -28,10 +36,33 @@ TEST(GridTest, RulesOfLife) {
     grille.changeState(0, grille.getGridWidth()/2 + grille.getGridWidth()%2);
     grille.changeState(grille.getGridHeight()/2 + grille.getGridHeight()%2, grille.getGridWidth()/2);
 
-    std::cout << "ici : " << grille.getGrid()[2][1].getIsAlive() << std::endl;
     // Vérifier les états après application des règles
-    EXPECT_TRUE(grille.getGrid()[1][2].getIsAlive()); // La cellule (1,2) reste vivante
-    EXPECT_TRUE(grille.getGrid()[2][2].getIsAlive()); // La cellule (2,2) reste vivante
-    EXPECT_TRUE(grille.getGrid()[2][1].getIsAlive()); // La cellule (2,1) devient vivante
+    EXPECT_FALSE(grille.getGrid()[0][0].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[0][1].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[0][2].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[0][3].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[0][4].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[1][0].getIsAlive()); // La cellule reste morte
     EXPECT_TRUE(grille.getGrid()[1][1].getIsAlive()); // La cellule (1,1) reste vivante
+    EXPECT_TRUE(grille.getGrid()[1][2].getIsAlive()); // La cellule (1,2) reste vivante
+    EXPECT_FALSE(grille.getGrid()[1][3].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[1][4].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[2][0].getIsAlive());  // La cellule reste morte
+    EXPECT_TRUE(grille.getGrid()[2][1].getIsAlive()); // La cellule (2,1) devient vivante
+    EXPECT_TRUE(grille.getGrid()[2][2].getIsAlive()); // La cellule (2,2) reste vivante
+    EXPECT_FALSE(grille.getGrid()[2][3].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[2][4].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[2][5].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[3][0].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[3][1].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[3][2].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[3][3].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[3][4].getIsAlive()); // La cellule (3,4) devient morte
+    EXPECT_FALSE(grille.getGrid()[4][0].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[4][1].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[4][2].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[4][3].getIsAlive()); // La cellule reste morte
+    EXPECT_FALSE(grille.getGrid()[4][4].getIsAlive()); // La cellule reste morte
+   
+    
 }

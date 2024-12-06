@@ -12,7 +12,7 @@ void Simulation :: initializeGrid()
     
     std::cout << "Entrez le chemin de votre fichier d'entrée : \n";
     //std::cin >> chemin;
-    chemin = "../fichiers/entre.txt";
+    chemin = "../fichiers/Generator_glider.txt";
 
     std::ifstream fichier(chemin);
 

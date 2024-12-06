@@ -195,8 +195,8 @@ void Graphique :: run()
 
         std::thread th1{&Grid::update, &grille, 0, 0};
         std::thread th2{&Grid::update, &grille, grille.getGridHeight()/2, 0};
-        std::thread th3{&Grid::update, &grille, 0, grille.getGridWidth()/2 + grille.getGridWidth()%2};
-        std::thread th4{&Grid::update, &grille, grille.getGridHeight()/2 + grille.getGridHeight()%2, grille.getGridWidth()/2};
+        std::thread th3{&Grid::update, &grille, 0, grille.getGridWidth()/2};
+        std::thread th4{&Grid::update, &grille, grille.getGridHeight()/2, grille.getGridWidth()/2};
 
         th1.join();
         th2.join();
@@ -205,8 +205,8 @@ void Graphique :: run()
         
         std::thread th5{&Grid::changeState, &grille, 0, 0};
         std::thread th6{&Grid::changeState, &grille, grille.getGridHeight()/2, 0};
-        std::thread th7{&Grid::changeState, &grille, 0, grille.getGridWidth()/2 + grille.getGridWidth()%2};
-        std::thread th8{&Grid::changeState, &grille, grille.getGridHeight()/2 + grille.getGridHeight()%2, grille.getGridWidth()/2};
+        std::thread th7{&Grid::changeState, &grille, 0, grille.getGridWidth()/2};
+        std::thread th8{&Grid::changeState, &grille, grille.getGridHeight()/2, grille.getGridWidth()/2};
 
         th5.join();
         th6.join();

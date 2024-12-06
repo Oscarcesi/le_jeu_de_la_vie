@@ -54,8 +54,8 @@ void Grid :: update(int i, int j)
     //int test;
     bool alive;
 
-    for (int x = i; x < i + gridHeight/2; ++x) {
-        for (int y = j; y < j + gridWidth/2; ++y) {
+    for (int x = i; x < i + gridHeight/2  + gridHeight%2; ++x) {
+        for (int y = j; y < j + gridWidth/2 + gridWidth%2; ++y) {
             int dx, dy, nx, ny, voisines = 0;
             //cout << "cellule suivant" << endl;
             //test = 0;
@@ -95,8 +95,8 @@ void Grid :: update(int i, int j)
 
 void Grid :: changeState(int i, int j)
 {
-    for (int x = i; x < i + gridHeight/2; ++x) {
-        for (int y = j; y < j + gridWidth/2; ++y) {
+    for (int x = i; x < i + gridHeight/2  + gridHeight%2; ++x) {
+        for (int y = j; y < j + gridWidth/2 + gridWidth%2; ++y) {
             if ((grid[x][y].getIsAlive() != grid[x][y].getNextState()) && not(grid[x][y].isInfected()))
             {
                 grid[x][y].changeState();
